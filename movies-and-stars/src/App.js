@@ -1,24 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import { Container, Row, Col } from 'react-bootstrap';
+import SelectBtn from './components/Button/Button';
+import Actor from './components/Card/Card';
+import MovieTable from './components/Table/Table';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container fluid>
+      <Row>
+        <Col className="d-flex justify-content-center">
+          <SelectBtn btnName="Keanu Reeves"/>
+        </Col>
+        <Col className="d-flex justify-content-center">
+          <SelectBtn btnName="Nicolas Cage"/>
+        </Col>
+      </Row>
+      <Row>
+        <Col className="d-flex justify-content-center">
+          <Actor 
+            title={"Keanu Reeves"}
+          />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <MovieTable />
+        </Col>
+      </Row>
+    </Container>    
   );
 }
 
