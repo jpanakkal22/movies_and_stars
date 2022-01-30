@@ -1,3 +1,7 @@
 .container {
   background-color: ghostwhite;
 }
+div > .container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}

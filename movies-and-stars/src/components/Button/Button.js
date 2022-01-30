@@ -3,7 +3,7 @@ import "./buttonStyle.css";
 
 function SelectBtn(props) {
     return (
-        <Button variant="warning">{props.btnName}</Button>
+        <Button variant="primary">{props.btnName}</Button>
     );    
 }
 
