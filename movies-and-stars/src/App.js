@@ -1,10 +1,10 @@
-import './App.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import StatusCode from './components/Status_Code/Status_Code';
 import Header from './components/Header/Header';
 import Label from './components/Label/label';
-import SelectBtn from './components/Button/Button';
+import ControlButton from './components/Button/Button';
 import MovieTable from './components/Table/Table';
+import './App.css';
 
 function App() {
   return (
@@ -17,12 +17,10 @@ function App() {
       </Row>
       <Row className='bg-light'>
         <Col className="d-flex justify-content-start align-items-center">
-          <Label 
-            name='Keanu Reeves'
-          />
-        </Col>
-        <Col className="d-flex justify-content-end">
-          <SelectBtn btnName='Nicolas Cage'/>
+          <Label />
+        </Col> 
+        <Col className='d-flex justify-content-end'>
+          <ControlButton />
         </Col>        
       </Row>      
       <Row>
