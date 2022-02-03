@@ -1,0 +1,27 @@
+{
+  "name": "movies_and_stars",
+  "version": "1.0.0",
+  "description": "* [Installation](#installation)\r * [Usage](#usage)\r * [License](#license)\r * [Badges](#badges)\r * [Contributing](#contributing)\r * [Tests](#tests)\r * [Questions](#questions)",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpanakkal22/movies_and_stars.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jpanakkal22/movies_and_stars/issues"
+  },
+  "homepage": "https://github.com/jpanakkal22/movies_and_stars#readme",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "node-fetch": "^2.6.7"
+  }
+}
