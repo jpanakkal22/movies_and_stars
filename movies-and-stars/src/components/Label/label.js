@@ -6,9 +6,4 @@ function Label(props) {
     );
 }
 
-/* Default name for Label when component loads*/
-Label.defaultProps = {
-    name: 'Press Toggle Button'
-}
-
 export default Label;

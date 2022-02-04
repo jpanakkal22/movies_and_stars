@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import Label from './components/Label/label';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import './App.css';
@@ -42,7 +43,10 @@ const App = () => {
       </Row>
       <Row className='bg-light'>
         <Col className="d-flex justify-content-start align-items-center">
-        <h5>Name: <span>{data}</span></h5> 
+          <Label 
+            name={data}
+          />
+
         </Col> 
         <Col className='d-flex justify-content-end'>
           <Button variant="success" onClick={handleClick}>Toggle</Button>
@@ -58,10 +62,21 @@ const App = () => {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                <td>Mark</td>
-                <td>Otto</td>                
-                </tr>                
+              {data === 'Keanu Reeves' ? listKR.map(coStar => {
+                return(
+                  <tr>
+                    <td>{coStar.Name}</td>
+                    <td>{coStar.KRMovies.join(', ')}</td>                
+                  </tr>
+                )
+              }):listNC.map(coStar => {
+                return(
+                  <tr>
+                    <td>{coStar.Name}</td>
+                    <td>{coStar.NCMovies.join(', ')}</td>                
+                  </tr>
+                  )                  
+              })}                                
             </tbody>
         </Table>     
         </Col>
