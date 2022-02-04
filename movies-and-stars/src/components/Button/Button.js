@@ -1,14 +1,10 @@
 import Button from 'react-bootstrap/Button';
 import "./buttonStyle.css";
 
-function ControlButton(props) {
+function ControlButton() {
     return(
-        <Button>{props.btnText}</Button>                
+        <Button>Toggle</Button>                
     )
-}
-
-ControlButton.defaultProps = {
-    btnText: "Keanu Reeves"
 }
 
 export default ControlButton;

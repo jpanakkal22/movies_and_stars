@@ -8,7 +8,7 @@ function Label(props) {
 
 /* Default name for Label when component loads*/
 Label.defaultProps = {
-    name: "Nicolas Cage"
+    name: 'Press Toggle Button'
 }
 
 export default Label;
