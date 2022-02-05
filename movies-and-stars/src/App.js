@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import StatusCode from './components/Status_Code/Status_Code';
 import Label from './components/Label/label';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
@@ -19,9 +20,8 @@ const App = () => {
     })
     .then(response => {
       setListKR(response[0]);
-      setListNC(response[1]);
-    })
-    
+      setListNC(response[1]);      
+    })    
   }, []);
  
 
@@ -33,9 +33,10 @@ const App = () => {
     }      
   }  
 
-  return (    
-    <Container className="container-fluid" fluid> 
-      {console.log(listKR, listNC)}    
+  return (
+    <div>
+<StatusCode />    
+    <Container className="container-fluid" fluid>       
       <Row>
         <Col className='d-flex justify-content-center bg-light'>
         <h1>Nicolas Cage & Keanu Reeves <br/>Co-Stars</h1>
@@ -57,23 +58,23 @@ const App = () => {
         <Table striped bordered hover>
             <thead>
                 <tr>
-                <th>Co-Star</th>
-                <th>Movies</th>                
+                <th>Movie</th>
+                <th>Co-Stars</th>                
                 </tr>
             </thead>
             <tbody>
               {data === 'Keanu Reeves' ? listKR.map(coStar => {
                 return(
                   <tr>
-                    <td>{coStar.Name}</td>
-                    <td>{coStar.KRMovies.join(', ')}</td>                
+                    <td>{coStar.title}</td>
+                    <td>{coStar.actors.join(', ')}</td>                
                   </tr>
                 )
               }):listNC.map(coStar => {
                 return(
                   <tr>
-                    <td>{coStar.Name}</td>
-                    <td>{coStar.NCMovies.join(', ')}</td>                
+                    <td>{coStar.title}</td>
+                    <td>{coStar.actors.join(', ')}</td>                
                   </tr>
                   )                  
               })}                                
@@ -81,7 +82,9 @@ const App = () => {
         </Table>     
         </Col>
       </Row>
-    </Container>       
+    </Container>
+    </div>
+           
   );
 }
 

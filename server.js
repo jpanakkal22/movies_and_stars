@@ -14,12 +14,6 @@ app.use(express.json());
 const urlMovies = 'https://switch-yam-equator.azurewebsites.net/api/movies';
 const urlActors = 'https://switch-yam-equator.azurewebsites.net/api/actors';
 const urlValidation = 'https://switch-yam-equator.azurewebsites.net/api/validation';
-const otherParam = {
-  headers: {
-    'x-chmura-cors': process.env.REACT_APP_API_KEY
-  },
-  method: "GET"
-};
 
 app.get('/api', async (req, res) => {
   const actorsResponse = await fetch(urlActors, {
@@ -35,6 +29,40 @@ app.get('/api', async (req, res) => {
   Promise.all([
     await actorsResponse.json(), await moviesResponse.json()
   ]).then(response => {
+    let movies = response[1];
+    let actors = response[0];
+    // Replace actorId's in response array with actor name
+    for(let i = 0; i < movies.length; i++){
+      for(let j = 0; j < movies[i].actors.length; j++) {
+        for(let k = 0; k < actors.length; k++) {
+          if(actors[k].actorId === movies[i].actors[j]) {
+            movies[i].actors[j] = actors[k].name;
+          }
+        }
+      }
+    }
+
+    // Filter out all movies with Keanu Reeves and remove his name from actors array
+    let keanuReevesMovies = movies.filter(actor => {
+      if(actor.actors.includes('Keanu Reeves')){
+        const index = actor.actors.indexOf('Keanu Reeves');
+        if (index > -1) {
+          actor.actors.splice(index, 1);
+        }
+        return actor
+      }
+    });
+
+    let nicolasCageMovies = movies.filter(actor => {
+      if(actor.actors.includes('Nicolas Cage')){
+        const index = actor.actors.indexOf('Nicolas Cage');
+        if (index > -1) {
+          actor.actors.splice(index, 1);
+        }
+        return actor
+      }
+    });    
+    
     let newArrayofActors = [];
   
     // Create a new array of actors from response with added properties
@@ -77,16 +105,7 @@ app.get('/api', async (req, res) => {
       }
     });
 
-    let coStarsKR = validationArray.filter(actor => {
-      return actor.KRMovies.length > 0;
-    })
-
-    let coStarsNC = validationArray.filter(actor => {
-      return actor.NCMovies.length > 0;
-    })
-
-    console.log(coStarsNC);
-    res.json([coStarsKR, coStarsNC]);
+    res.json([keanuReevesMovies, nicolasCageMovies]);
     
   }).catch(error => {
     console.log(error);
