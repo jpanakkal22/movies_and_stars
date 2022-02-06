@@ -2,11 +2,9 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import StatusCode from './components/Status_Code/Status_Code';
-import Label from './components/Label/label';
-import Table from 'react-bootstrap/Table';
-import Button from 'react-bootstrap/Button';
+import Actor from './components/Actor/Actor';
+import MovieTable from './components/MovieTable/MovieTable';
 import './App.css';
-
 
 const App = () => {
   const [data, setData] = useState('Keanu Reeves');
@@ -22,8 +20,7 @@ const App = () => {
       setListKR(response[0]);
       setListNC(response[1]);      
     })    
-  }, []);
- 
+  }, []);   
 
   const handleClick = () => {
     if(data === 'Keanu Reeves') {
@@ -31,55 +28,27 @@ const App = () => {
     } else if (data === 'Nicolas Cage'){
       setData('Keanu Reeves')
     }      
-  }  
+  }
 
   return (
     <div>
-<StatusCode />    
+    <StatusCode />    
     <Container className="container-fluid" fluid>       
-      <Row>
-        <Col className='d-flex justify-content-center bg-light'>
-        <h1>Nicolas Cage & Keanu Reeves <br/>Co-Stars</h1>
-        </Col>
-      </Row>
-      <Row className='bg-light'>
-        <Col className="d-flex justify-content-start align-items-center">
-          <Label 
+      <Row className="d-flex justify-content-center">
+        <Col xs={4} className="d-flex justify-content-center">
+          <Actor 
             name={data}
+            handleClick={handleClick}
           />
-
-        </Col> 
-        <Col className='d-flex justify-content-end'>
-          <Button variant="success" onClick={handleClick}>Toggle</Button>
-        </Col>        
+        </Col>            
       </Row>      
-      <Row>
-        <Col>    
-        <Table striped bordered hover>
-            <thead>
-                <tr>
-                <th>Movie</th>
-                <th>Co-Stars</th>                
-                </tr>
-            </thead>
-            <tbody>
-              {data === 'Keanu Reeves' ? listKR.map(coStar => {
-                return(
-                  <tr>
-                    <td>{coStar.title}</td>
-                    <td>{coStar.actors.join(', ')}</td>                
-                  </tr>
-                )
-              }):listNC.map(coStar => {
-                return(
-                  <tr>
-                    <td>{coStar.title}</td>
-                    <td>{coStar.actors.join(', ')}</td>                
-                  </tr>
-                  )                  
-              })}                                
-            </tbody>
-        </Table>     
+      <Row className="d-flex justify-content-center">
+        <Col xs={10}>         
+          <MovieTable
+            data = {data}
+            listKR = {listKR}
+            listNC = {listNC}
+          />             
         </Col>
       </Row>
     </Container>

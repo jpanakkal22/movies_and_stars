@@ -5,3 +5,12 @@ div > .container-fluid {
   padding-left: 0;
   padding-right: 0;
 }
+
+.table {
+  text-align: center;
+}
+
+thead {
+  background-color: rgb(33, 37, 41);
+  color: white;
+}
