@@ -1,11 +1,20 @@
+import { Row, Col } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button';
 import "./ActorStyle.css";
 
 function Actor(props) {
     return(
         <div id='actorDiv'>
-            <h5>Name: <span>{props.name}</span></h5>
-            <Button onClick={props.handleClick}>Toggle</Button>
+            <Row>
+                <Col className='actor d-flex justify-content-center align-items-center'>
+                    <h3>{props.name}</h3>
+                </Col>
+            </Row>
+            <Row>
+                <Col className='actor d-flex justify-content-center'>
+                    <Button onClick={props.handleClick}>Toggle</Button>
+                </Col>
+            </Row>         
         </div>                        
     )
 }
