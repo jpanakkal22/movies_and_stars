@@ -35,7 +35,7 @@ const App = () => {
     <StatusCode />    
     <Container className="container-fluid" fluid>       
       <Row className="d-flex justify-content-center">
-        <Col xs={4} className="d-flex justify-content-center">
+        <Col className="d-flex justify-content-center">
           <Actor 
             name={data}
             handleClick={handleClick}
@@ -52,8 +52,7 @@ const App = () => {
         </Col>
       </Row>
     </Container>
-    </div>
-           
+    </div>           
   );
 }
 
