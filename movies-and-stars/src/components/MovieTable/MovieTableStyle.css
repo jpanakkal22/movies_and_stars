@@ -1,10 +1,21 @@
 .table-responsive {
-    max-height:300px;
+    max-height:325px;
     box-shadow: -10px 10px 10px #888888;
-    margin-top: 75px;
+    margin: 50px;
+    border-radius: 20px;
 }
 
 table thead {
     position: sticky;
     top: 0;
+}
+
+th {
+    width: 50%;
+}
+
+@media only screen and (max-width: 500px) {
+    .table-responsive {
+      margin: 0;
+    }
 }
