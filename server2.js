@@ -13,6 +13,19 @@ app.use(express.json());
 
 const APIKey = process.env.REACT_APP_API_KEY1;
 
+// Search Top 250 Movies
+app.get('/api/movies250/', (req, res) => {
+    const url = `https://imdb-api.com/en/API/Top250Movies/${APIKey}`;
+    
+    axios.get(url)
+    .then(response => {
+        res.json(response.data.items);                       
+    })
+    .catch(error => {
+        console.log(error);
+    })
+})
+
 // Search Movies
 app.get('/api/movie/:movie', (req, res) => {    
     let movie = req.params.movie;
@@ -34,12 +47,13 @@ app.get('/api/actor/:actor', (req, res) => {
 
     axios.get(url)
     .then(response => {
-        res.json(response.data.results)
+        res.json(response.data.results);        
     })
     .catch(error => {
         console.log(error);
     })
 })
+
 
 app.listen(8000, () => {
     console.log(`Server is running on PORT ${PORT}`);
