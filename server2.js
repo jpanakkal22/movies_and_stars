@@ -13,17 +13,32 @@ app.use(express.json());
 
 const APIKey = process.env.REACT_APP_API_KEY1;
 
-app.get('/api/:movie', (req, res) => {    
-    let movie = req.params.movie
+// Search Movies
+app.get('/api/movie/:movie', (req, res) => {    
+    let movie = req.params.movie;
     const url = `https://imdb-api.com/en/API/SearchMovie/${APIKey}/${movie}`;
 
     axios.get(url)
-    .then(function (response) {        
+    .then(response => {        
     res.json(response.data.results)
     })    
-    .catch(function (error) {
+    .catch(error => {
     console.log(error);
     })       
+})
+
+// Search Actors
+app.get('/api/actor/:actor', (req, res) => {
+    let actor = req.params.actor;
+    const url = `https://imdb-api.com/en/API/SearchName/${APIKey}/${actor}`;
+
+    axios.get(url)
+    .then(response => {
+        res.json(response.data.results)
+    })
+    .catch(error => {
+        console.log(error);
+    })
 })
 
 app.listen(8000, () => {
