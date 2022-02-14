@@ -7,25 +7,20 @@ function MovieTable(props) {
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                    <th>Movie</th>
-                    <th>Co-Stars</th>                
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Id</th>               
                     </tr>
                 </thead>
-                <tbody>
-                {props.data === 'Keanu Reeves' ? props.listKR.map(coStar => {
-                return(
+                <tbody>                
+              {props.data.map(data => {
+                return(                                    
                   <tr>
-                    <td>{coStar.title}</td>
-                    <td>{coStar.actors.join(', ')}</td>                
-                  </tr>
-                )
-              }):props.listNC.map(coStar => {
-                return(
-                  <tr>
-                    <td>{coStar.title}</td>
-                    <td>{coStar.actors.join(', ')}</td>                
-                  </tr>
-                  )                  
+                    <td><img src={data.image} alt={data.title} loading='lazy'/></td>
+                    <td>{data.title}</td>
+                    <td>{data.id}</td>
+                  </tr>                                                                           
+                )                        
               })}
                 </tbody>
             </Table> 
