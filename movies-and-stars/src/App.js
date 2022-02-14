@@ -1,8 +1,14 @@
+import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import './App.css';
 
 const App = () => {
+  const [DropDown, setDropDown] = useState('imdb');
+
+  const handleDropdownChange = (event) => {
+    setDropDown(event.target.innerText);       
+  }
  
   return(   
     <div className='container fluid'>
@@ -10,8 +16,8 @@ const App = () => {
           <div className='col-sm-8'>
               <div className="input-group input-group-sm">
                   <div className="input-group-prepend">
-                      <button className="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                      <div className="dropdown-menu">
+                      <button className="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{DropDown}</button>
+                      <div className="dropdown-menu" onClick={handleDropdownChange}>
                           <a className="dropdown-item" href="#">Movies</a>
                           <a className="dropdown-item" href="#">Actors</a>
                           <a className="dropdown-item" href="#">Top 250 Movies</a>                            
