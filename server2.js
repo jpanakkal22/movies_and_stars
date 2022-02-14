@@ -19,7 +19,7 @@ app.get('/api/movies250/', (req, res) => {
     
     axios.get(url)
     .then(response => {
-        res.json(response.data.items);                       
+        res.json(response.data.items);                               
     })
     .catch(error => {
         console.log(error);
@@ -48,6 +48,19 @@ app.get('/api/actor/:actor', (req, res) => {
     axios.get(url)
     .then(response => {
         res.json(response.data.results);        
+    })
+    .catch(error => {
+        console.log(error);
+    })
+})
+
+app.get('/api/Title/:id', (req, res) => {
+    let id = req.params.id;
+    const url = `https://imdb-api.com/en/API/Title/${APIKey}/${id}`;
+
+    axios.get(url)
+    .then(response => {
+        res.json(response.data);                
     })
     .catch(error => {
         console.log(error);

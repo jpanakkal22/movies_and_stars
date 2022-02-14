@@ -45,7 +45,7 @@ const App = () => {
 
   return(
     <div>
-        {console.log(data)}
+        {/* {console.log(data)} */}
         <div className='container fluid'>
             <div className='row d-flex justify-content-center p-4'>
                 <div className='col-sm-8'>
@@ -53,9 +53,9 @@ const App = () => {
                         <div className="input-group-prepend">
                             <button className="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{DropDown}</button>
                             <div className="dropdown-menu" onClick={handleDropdownChange}>
-                                <a className="dropdown-item" href="#">Movies</a>
-                                <a className="dropdown-item" href="#">Actors</a>
-                                <a className="dropdown-item" href="#">Top 250 Movies</a>                            
+                                <li className="dropdown-item">Movies</li>
+                                <li className="dropdown-item">Actors</li>
+                                <li className="dropdown-item">Top 250 Movies</li>                            
                             </div>
                         </div>
                         <input type="text" className="form-control" placeholder="Search..." aria-label="Search..." aria-describedby="button-addon2" onChange={handleInputChange} value={name}/>
