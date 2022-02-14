@@ -5,11 +5,16 @@ import './App.css';
 
 const App = () => {
   const [DropDown, setDropDown] = useState('imdb');
+  const [name, setName] = useState(''); 
 
   const handleDropdownChange = (event) => {
     setDropDown(event.target.innerText);       
   }
  
+  const handleInputChange = (event) => {
+    setName(event.target.value);
+  }
+
   return(   
     <div className='container fluid'>
       <div className='row d-flex justify-content-center p-4'>
@@ -23,7 +28,7 @@ const App = () => {
                           <a className="dropdown-item" href="#">Top 250 Movies</a>                            
                       </div>
                   </div>
-                  <input type="text" className="form-control" placeholder="Search..." aria-label="Search..." aria-describedby="button-addon2"/>
+                  <input type="text" className="form-control" placeholder="Search..." aria-label="Search..." aria-describedby="button-addon2" onChange={handleInputChange} value={name}/>
                   <div className="input-group-append">
                       <button className="btn btn-secondary btn-sm" type="button" id="button-addon2"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
                   </div>
