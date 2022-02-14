@@ -1,59 +1,31 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import StatusCode from './components/Status_Code/Status_Code';
-import Actor from './components/Actor/Actor';
-import MovieTable from './components/MovieTable/MovieTable';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import './App.css';
 
 const App = () => {
-  const [data, setData] = useState('Keanu Reeves');
-  const [listKR, setListKR] = useState([]);
-  const [listNC, setListNC] = useState([]);
-
-  useEffect(() => {
-    fetch('/api')
-    .then(res => {
-      return res.json();
-    })
-    .then(response => {
-      setListKR(response[0]);
-      setListNC(response[1]);      
-    })    
-  }, []);   
-
-  const handleClick = () => {
-    if(data === 'Keanu Reeves') {
-      setData('Nicolas Cage')
-    } else if (data === 'Nicolas Cage'){
-      setData('Keanu Reeves')
-    }      
-  }
-
-  return (
-    <div>
-    <StatusCode />    
-    <Container className="container-fluid" fluid>       
-      <Row className="d-flex justify-content-center">
-        <Col className="d-flex justify-content-center">
-          <Actor 
-            name={data}
-            handleClick={handleClick}
-          />
-        </Col>            
-      </Row>      
-      <Row className="d-flex justify-content-center">
-        <Col xs={10}>         
-          <MovieTable
-            data = {data}
-            listKR = {listKR}
-            listNC = {listNC}
-          />             
-        </Col>
-      </Row>
-    </Container>
-    </div>           
-  );
+ 
+  return(   
+    <div className='container fluid'>
+      <div className='row d-flex justify-content-center p-4'>
+          <div className='col-sm-8'>
+              <div className="input-group input-group-sm">
+                  <div className="input-group-prepend">
+                      <button className="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                      <div className="dropdown-menu">
+                          <a className="dropdown-item" href="#">Movies</a>
+                          <a className="dropdown-item" href="#">Actors</a>
+                          <a className="dropdown-item" href="#">Top 250 Movies</a>                            
+                      </div>
+                  </div>
+                  <input type="text" className="form-control" placeholder="Search..." aria-label="Search..." aria-describedby="button-addon2"/>
+                  <div className="input-group-append">
+                      <button className="btn btn-secondary btn-sm" type="button" id="button-addon2"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
+                  </div>
+              </div>                     
+          </div>
+      </div>  
+    </div>  
+  )
 }
 
 export default App;
