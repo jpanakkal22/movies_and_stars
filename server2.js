@@ -67,6 +67,20 @@ app.get('/api/Title/:id', (req, res) => {
     })
 })
 
+// Search Actor by ID
+app.get('/api/actorId/:actorId', (req, res) => {
+    let actor = req.params.actorId;
+    const url = `https://imdb-api.com/en/API/Name/${APIKey}/${actor}`;
+
+    axios.get(url)
+    .then(response => {
+        res.json(response.data);        
+    })
+    .catch(error => {
+        console.log(error);
+    })
+})
+
 
 app.listen(8000, () => {
     console.log(`Server is running on PORT ${PORT}`);

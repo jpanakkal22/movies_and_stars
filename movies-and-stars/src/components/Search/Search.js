@@ -67,6 +67,7 @@ const Search = () => {
             <div className='row d-flex justify-content-center'>
                 <div className='col-sm-10'>
                     <MovieTable 
+                    dropDown = {DropDown}
                     data = {data}
                     />                     
                 </div> 
