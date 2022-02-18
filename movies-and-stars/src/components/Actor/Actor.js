@@ -20,8 +20,7 @@ const Actor = () => {
     }, []);
 
     return(
-        <div className="container fluid">       
-        {console.log(actor)}    
+        <div className="container fluid">        
             <div className='row'>                
                 <div className='col-sm-4 d-flex justify-content-center'>
                     <img className="actorImage" src={actor.image} alt={actor.name}/>
@@ -33,9 +32,14 @@ const Actor = () => {
                     <div className="row">
                         <p>{actor.summary}</p>
                     </div>
-                    <div className="row d-flex justify-content-end">
+                    <div className="row d-flex justify-content-end m-2">
                         <div className="col-sm-3 d-flex justify-content-end">
                             <Link to={'/'}><button className="btn btn-secondary btn-sm" type="button" id="button-addon2"><FontAwesomeIcon icon={faArrowLeftLong} /> Home</button></Link>
+                        </div>                        
+                    </div>  
+                    <div className="row d-flex justify-content-end m-2">
+                        <div className="col-sm-3 d-flex justify-content-end">
+                        <Link to={`/movie/${params.movieId}`}><button className="btn btn-secondary btn-sm" type="button" id="button-addon2"><FontAwesomeIcon icon={faArrowLeftLong} /> Back</button></Link>
                         </div>                        
                     </div>                    
                 </div>                  
