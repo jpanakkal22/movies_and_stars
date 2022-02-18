@@ -36,12 +36,13 @@ const Actor = () => {
                         <div className="col-sm-3 d-flex justify-content-end">
                             <Link to={'/'}><button className="btn btn-secondary btn-sm" type="button" id="button-addon2"><FontAwesomeIcon icon={faArrowLeftLong} /> Home</button></Link>
                         </div>                        
-                    </div>  
-                    <div className="row d-flex justify-content-end m-2">
+                    </div> 
+                    {!params.movieId?<div className="col-sm-3 d-flex justify-content-end"></div>:<div className="row d-flex justify-content-end m-2">
                         <div className="col-sm-3 d-flex justify-content-end">
                         <Link to={`/movie/${params.movieId}`}><button className="btn btn-secondary btn-sm" type="button" id="button-addon2"><FontAwesomeIcon icon={faArrowLeftLong} /> Back</button></Link>
                         </div>                        
-                    </div>                    
+                    </div> } 
+                                       
                 </div>                  
             </div> 
         </div>               
