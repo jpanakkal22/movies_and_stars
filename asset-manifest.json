@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/movies_and_stars/static/css/main.27bf46ed.css",
+    "main.js": "/movies_and_stars/static/js/main.9524bcb3.js",
+    "static/js/787.10b257c2.chunk.js": "/movies_and_stars/static/js/787.10b257c2.chunk.js",
+    "static/media/donnie-rosie-taO2fC7sxDU-unsplash.jpg": "/movies_and_stars/static/media/donnie-rosie-taO2fC7sxDU-unsplash.ee00ad17959ce4f23a45.jpg",
+    "index.html": "/movies_and_stars/index.html",
+    "main.27bf46ed.css.map": "/movies_and_stars/static/css/main.27bf46ed.css.map",
+    "main.9524bcb3.js.map": "/movies_and_stars/static/js/main.9524bcb3.js.map",
+    "787.10b257c2.chunk.js.map": "/movies_and_stars/static/js/787.10b257c2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.27bf46ed.css",
+    "static/js/main.9524bcb3.js"
+  ]
+}
