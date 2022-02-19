@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import MovieTable from '../MovieTable/MovieTable';
+import './searchStyle.css';
 
 const Search = () => {
   const [DropDown, setDropDown] = useState('imdb');
@@ -32,9 +33,9 @@ const Search = () => {
             case 'Movies':
                route = '/api/movie/' + name;
               break;
-            case 'Actors':
+            case 'Actor/Actress':
               route = '/api/actor/' + name;
-              break;            
+              break;                     
         }
     }
     await axios.get(route)
@@ -44,35 +45,33 @@ const Search = () => {
   }
 
   return(
-    <div>        
-        <div className='container fluid'>
-            <div className='row d-flex justify-content-center p-4'>
-                <div className='col-sm-8'>
-                    <div className="input-group input-group-sm">
-                        <div className="input-group-prepend">
-                            <button className="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{DropDown}</button>
-                            <div className="dropdown-menu" onClick={handleDropdownChange}>
-                                <li className="dropdown-item">Movies</li>
-                                <li className="dropdown-item">Actors</li>
-                                <li className="dropdown-item">Top 250 Movies</li>                            
-                            </div>
+    <div>         
+        <div className='row d-flex justify-content-center p-4'>
+            <div className='col-sm-8 p-0 searchBar'>
+                <div className="input-group input-group-sm">
+                    <div className="input-group-prepend">
+                        <button className="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{DropDown}</button>
+                        <div className="dropdown-menu" onClick={handleDropdownChange}>
+                            <li className="dropdown-item">Movies</li>
+                            <li className="dropdown-item">Actor/Actress</li>
+                            <li className="dropdown-item">Top 250 Movies</li>                            
                         </div>
-                        <input type="text" className="form-control" placeholder="Search..." aria-label="Search..." aria-describedby="button-addon2" onChange={handleInputChange} value={name}/>
-                        <div className="input-group-append">
-                            <button className="btn btn-secondary btn-sm" type="button" id="button-addon2" onClick={handleSubmit}><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
-                        </div>
-                    </div>                     
-                </div>
-            </div>
-            <div className='row d-flex justify-content-center'>
-                <div className='col-sm-10'>
-                    <MovieTable 
-                    dropDown = {DropDown}
-                    data = {data}
-                    />                     
-                </div> 
+                    </div>
+                    <input type="text" className="form-control" placeholder="Search..." aria-label="Search..." aria-describedby="button-addon2" onChange={handleInputChange} value={name}/>
+                    <div className="input-group-append">
+                        <button className="btn btn-secondary btn-sm" type="button" id="button-addon2" onClick={handleSubmit}><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
+                    </div>
+                </div>                     
             </div>
         </div>            
+        <div className='row d-flex justify-content-center'>                                 
+            <div className='col-sm-10'>                    
+                <MovieTable 
+                dropDown = {DropDown}
+                data = {data}
+                />                                   
+            </div>               
+        </div>       
     </div>    
     )
 }

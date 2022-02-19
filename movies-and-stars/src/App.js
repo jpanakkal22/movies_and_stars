@@ -6,8 +6,13 @@ import Actor from "./components/Actor/Actor"
 import './App.css';
 
 const App = () => {    
-  return (
-    <div className="App">
+  return (    
+    <div className='container fluid'>
+      <div className="row header">
+        <nav className="navbar navbar-light d-flex justify-content-center">
+            <h1>Movies & Stars</h1>                
+        </nav>
+      </div>
       <Routes>
         <Route path="/" element={<Search />} />
         <Route path="movie" element={<Movie />}>
@@ -19,7 +24,7 @@ const App = () => {
           </Route>          
         </Route>
       </Routes>
-    </div>
+    </div>    
   );
 }
 

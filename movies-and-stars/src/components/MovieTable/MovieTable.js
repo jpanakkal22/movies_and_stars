@@ -5,7 +5,6 @@ import './MovieTableStyle.css';
 function MovieTable(props) {
     return (
       <div className='row'>
-        {console.log(props.data)}
         <div className='col'>
           <div className='table-responsive'>
             <Table striped bordered hover>
@@ -16,7 +15,7 @@ function MovieTable(props) {
                 </tr>
               </thead>
               <tbody> 
-                {(props.dropDown === 'Actors')?props.data.map(data => {
+                {(props.dropDown === 'Actor/Actress')?props.data.map(data => {
                   return(                                    
                     <tr>
                       <td><img src={data.image} alt={data.title} loading='lazy'/></td>

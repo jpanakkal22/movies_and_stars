@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
+import './movieStyle.css';
 
 const Movie = () => {
     const [title, setTitle] = useState({});   
@@ -20,11 +21,11 @@ const Movie = () => {
 
     return(
         <div className="container fluid">                 
-            <div className='row' id='#movieData'>
+            <div className='row'>
                 <div className='col-sm-4 d-flex justify-content-center'>
                     <img className='movieImages' src={title.image} alt={title.title}/>
                 </div>
-                <div className='col-sm-8'>
+                <div className='col-sm-8 movieData'>
                     <div className="row">
                         <h4>{title.title} ({title.year})</h4>
                         <p>Starring: {title.starList? title.starList.map(actor => {
@@ -35,7 +36,7 @@ const Movie = () => {
                         <p>Rated: <strong>{title.contentRating}</strong></p>
                         <p>imDb Rating: {title.imDbRating}</p><hr/><br/>
                     </div>
-                    <div className="row">
+                    <div className="row plot">
                         <p>{title.plot}</p>
                     </div>
                     <div className="row d-flex justify-content-end">
