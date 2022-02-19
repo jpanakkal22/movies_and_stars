@@ -1,10 +1,14 @@
 {
   "name": "movies_and_stars",
   "version": "1.0.0",
+  "homepage": "https://jpanakkal22.github.io/movies_and_stars",
   "description": "* [Installation](#installation)\r * [Usage](#usage)\r * [License](#license)\r * [Badges](#badges)\r * [Contributing](#contributing)\r * [Tests](#tests)\r * [Questions](#questions)",
   "main": "index.js",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "nodemon server2.js",
+    "build": "react-scripts build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,7 +21,6 @@
   "bugs": {
     "url": "https://github.com/jpanakkal22/movies_and_stars/issues"
   },
-  "homepage": "https://github.com/jpanakkal22/movies_and_stars#readme",
   "dependencies": {
     "axios": "^0.25.0",
     "body-parser": "^1.19.1",
@@ -25,5 +28,8 @@
     "express": "^4.17.2",
     "node-fetch": "^2.6.7",
     "react-router-dom": "^6.2.1"
+  },
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
   }
 }
