@@ -1,16 +1,16 @@
 {
   "name": "movies_and_stars",
-  "version": "1.0.0",
-  "homepage": "https://jpanakkal22.github.io/movies_and_stars",
-  "description": "* [Installation](#installation)\r * [Usage](#usage)\r * [License](#license)\r * [Badges](#badges)\r * [Contributing](#contributing)\r * [Tests](#tests)\r * [Questions](#questions)",
-  "main": "index.js",
+  "version": "1.0.0",  
+  "description": "imDb App",
+  "main": "server2.js",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "node server2.js",
-    "build": "cd client && npm install && npm run build",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server2.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"    
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
   "dependencies": {
     "axios": "^0.25.0",
     "body-parser": "^1.19.1",
+    "cors": "^2.8.5",
     "dotenv": "^14.3.2",
     "express": "^4.17.2",
     "node-fetch": "^2.6.7",

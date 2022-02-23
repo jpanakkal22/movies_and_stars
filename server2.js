@@ -3,7 +3,6 @@ const express = require('express');
 require('dotenv').config();
 const axios = require('axios');
 
-
 const app = express();
 
 const PORT = process.env.PORT || 3001;
@@ -11,9 +10,10 @@ const PORT = process.env.PORT || 3001;
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-// Have Node serve the files for our built React app
-app.use(express.static(path.resolve(__dirname, '../client/build')));  
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("client/build"));
+}
 
 const APIKey = process.env.REACT_APP_API_KEY1;
 
@@ -84,6 +84,12 @@ app.get('/api/actorId/:actorId', (req, res) => {
         console.log(error);
     })
 })
+
+// Send every other request to the React app
+// Define any API routes before this runs
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
 
 app.listen(PORT, () => {
