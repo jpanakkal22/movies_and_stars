@@ -12,10 +12,8 @@ const PORT = process.env.PORT || 3001;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('client/build'));
-  }
-  
+// Have Node serve the files for our built React app
+app.use(express.static(path.resolve(__dirname, '../client/build')));  
 
 const APIKey = process.env.REACT_APP_API_KEY1;
 
