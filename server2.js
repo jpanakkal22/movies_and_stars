@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 require('dotenv').config();
 const axios = require('axios');
@@ -5,11 +6,16 @@ const axios = require('axios');
 
 const app = express();
 
-const PORT = 8000;
+const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'));
+  }
+  
 
 const APIKey = process.env.REACT_APP_API_KEY1;
 
@@ -19,7 +25,7 @@ app.get('/api/movies250/', (req, res) => {
     
     axios.get(url)
     .then(response => {
-        res.json(response.data.items);                               
+        res.json(response.data.items);                                       
     })
     .catch(error => {
         console.log(error);
