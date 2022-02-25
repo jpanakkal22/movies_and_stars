@@ -23,7 +23,7 @@ This application allows users to search the IMDb API for their favorite actor/ac
 
 ![Search Page](/client/public/Images/movies_and_stars.PNG)
 
-Search IMDb API for 'Movies', 'Actor' or 'Top 250 Movies'.
+Search IMDb API for 'Movies', 'Actor/Actress' or 'Top 250 Movies'.
 
 ![Movie Page](/client/public/Images/movies_and_stars_M.PNG)
 
